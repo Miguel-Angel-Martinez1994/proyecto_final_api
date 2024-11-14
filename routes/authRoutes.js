@@ -1,17 +1,25 @@
 const express =require("express")
 const router= express.Router()
+const {
+    crearLibro,
+    borrarLibro,
+    editarLibro,
+    obtenerLibros
+}=require("../controllers/librosController")
 
 
+//obtener todos los libros
+router.get("/allLibros/:page",obtenerLibros)
 
+//crear 1 libro
+router.post("/createLibro",crearLibro)
 
-//vista de registrase en la APP de la aplicacion
-router.post("/signup",crear_usuario_controller)
+//editar 1 libro
+router.put("/editLibro/:id",editarLibro)
 
-//vista de loggearse en la APP de la aplicacion
-router.post("/",obtener_usuario_controller)
+//borrar 1 libro
+router.delete("/removeLibro/:id",borrarLibro)
 
-//vista de salirse de la aplicacion
-router.post("/logout")
 
 
 module.exports=router
