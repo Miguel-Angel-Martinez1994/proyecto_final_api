@@ -2,7 +2,9 @@ const {
     getLibrosModel,
     crearLibrosModel,
     editarLibroModel,
-    borrarLibroModel
+    borrarLibroModel,
+    getLibroPorCategoria,
+    getLibroById
 }=require("../models/libroModels")
 
 
@@ -110,9 +112,59 @@ const borrarLibro=async(req,res)=>{
     }
 }
 
+const obtenerLibroPorCategoria=async(req,res)=>{
+    const {categoria_id}=req.params
+    try{
+        const respuesta =await getLibroPorCategoria(categoria_id)
+
+        if(!respuesta){
+            return res.status(400).json({
+                ok:false,
+                msg:"error al buscar por categoria"
+            })
+        }
+
+        return res.status(200).json({
+            ok:true,
+            respuesta
+        })
+    }catch(error){
+        console.log(error)
+        return res.status(500).json({
+            msg:"ERROR al buscar por categoria"
+        })
+    }
+}
+
+const obtenerLibroPorId=async(req,res)=>{
+    const {id}=req.params
+    try{
+        const respuesta =await getLibroById(id)
+
+        if(!respuesta){
+            return res.status(400).json({
+                ok:false,
+                msg:"error al buscar por ID"
+            })
+        }
+
+        return res.status(200).json({
+            ok:true,
+            respuesta
+        })
+    }catch(error){
+        console.log(error)
+        return res.status(500).json({
+            msg:"ERROR al buscar por ID"
+        })
+    }
+}
+
 module.exports={
     obtenerLibros,
     crearLibro,
     editarLibro,
-    borrarLibro
+    borrarLibro,
+    obtenerLibroPorId,
+    obtenerLibroPorCategoria
 }

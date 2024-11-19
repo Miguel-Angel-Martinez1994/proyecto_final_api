@@ -4,12 +4,20 @@ const {
     crearLibro,
     borrarLibro,
     editarLibro,
-    obtenerLibros
+    obtenerLibros,
+    obtenerLibroPorCategoria,
+    obtenerLibroPorId
 }=require("../controllers/librosController")
 
 
 //obtener todos los libros
 router.get("/allLibros/:page",obtenerLibros)
+
+//obtener libro por su categoria
+router.get("/getLibroCategoria/:categoria_id",obtenerLibroPorCategoria)
+
+//obtener libro por su id
+router.get("/getLibro/:id",obtenerLibroPorId)
 
 //crear 1 libro
 router.post("/createLibro",crearLibro)
