@@ -3,8 +3,8 @@ const libros ={
         SELECT * 
         FROM libros
         ORDER BY libro_id
-        LIMIT 4
-        OFFSET 4*$1
+        LIMIT 6
+        OFFSET 6*$1
     `,
     getLibroByTittle:`
         SELECT * 

@@ -12,6 +12,8 @@ CREATE TABLE libros (
     sinopsis VARCHAR(255),
     categoria_id INT,
     FOREIGN KEY (categoria_id) REFERENCES categorias(categoria_id)
+    usuario_id INT,
+    FOREIGN KEY (usuario_id) REFERENCES usuarios(usuario_id)
 );
 
 CREATE TABLE usuarios (
@@ -19,7 +21,6 @@ CREATE TABLE usuarios (
     nombre VARCHAR(255),
     rol VARCHAR(255),
     libro_id INT,
-    FOREIGN KEY (libro_id) REFERENCES libros(libro_id)
 );
 
 
